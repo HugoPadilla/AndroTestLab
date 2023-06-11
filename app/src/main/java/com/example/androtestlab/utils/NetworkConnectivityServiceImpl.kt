@@ -6,15 +6,17 @@ import android.net.ConnectivityManager.NetworkCallback
 import android.net.Network
 import android.net.NetworkCapabilities
 import android.net.NetworkRequest
+import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.flowOn
+import javax.inject.Inject
 
-class NetworkConnectivityServiceImpl(
-    context: Context
+class NetworkConnectivityServiceImpl @Inject constructor(
+    @ApplicationContext context: Context
 ) : NetworkConnectivityService {
 
     private val connectivityManager =
